@@ -1,14 +1,15 @@
 package Practice;
 
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.get;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 
 public class FakeRestApiTest {
@@ -39,7 +40,7 @@ public class FakeRestApiTest {
 
         /////////////////////////////////////JSON Schema validation///////////////////////////////////
         ///// To Convert JSON to Json schema Use This Link ---->>  https://jsonformatter.org/json-to-jsonschema /////
-        get("/Activities").then().assertThat().body(matchesJsonSchemaInClasspath("schema.json"));
+        get("/Activities").then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/resources/TestData/getActivitiesSchema.json")));
 
     }
 }
