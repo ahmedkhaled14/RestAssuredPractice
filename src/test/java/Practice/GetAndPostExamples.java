@@ -1,3 +1,5 @@
+package Practice;
+
 import io.restassured.http.ContentType;
 import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeMethod;
@@ -47,14 +49,7 @@ public class GetAndPostExamples {
                 .body("title",equalTo("Ahmed"))
                 .log()
                 .all();
-
-
-
-
-
-
     }
-
 
 
 }
