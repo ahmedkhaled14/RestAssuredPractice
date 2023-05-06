@@ -2,6 +2,7 @@ package FakeRestApiTest;
 
 import FakeRestAPI.Activities;
 import Utils.JsonFileManager;
+import io.qameta.allure.*;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -11,6 +12,9 @@ import java.io.File;
 
 import static org.hamcrest.Matchers.equalTo;
 
+
+@Epic("REST API Test")
+@Feature("Verify CRUD Operations on Activities module")
 public class ActivitiesApiTest {
     Activities activities = new Activities();
     JsonFileManager createActivityJson = new JsonFileManager("src/test/resources/TestData/createActivityTestData.json");
@@ -18,6 +22,9 @@ public class ActivitiesApiTest {
     JsonFileManager updateActivityJson = new JsonFileManager("src/test/resources/TestData/updateActivityTestData.json");
 
     @Test(description = "get all Activities")
+    @Story("GET Request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description : Verify status Code equal:200 & Validate Json Schema ")
     public void getActivitiesTest() {
         Response getActivities = activities.getActivities();
         Assert.assertEquals(getActivities.statusCode(), 200);
@@ -31,6 +38,9 @@ public class ActivitiesApiTest {
     }
 
     @Test(description = "get Activity By ID")
+    @Story("GET Request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description : Verify title & ID & Validate Json Schema & Verify status Code equal:200 ")
     public void getActivitiesByIdTest() {
         Response getActivitiesById = activities.getActivitiesByID(1);
         getActivitiesById.then()
@@ -45,6 +55,9 @@ public class ActivitiesApiTest {
     }
 
     @Test(description = "create New Activity")
+    @Story("post Request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description : Verify title & completed of new Activity")
     public void createActivity() {
 
         activities.postActivities(createActivityJson.getTestData("title"), Boolean.valueOf(createActivityJson.getTestData("completed")))
@@ -58,6 +71,9 @@ public class ActivitiesApiTest {
     }
 
     @Test(description = "update Activity")
+    @Story("put Request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description : Verify title & completed of updated Activity")
     public void updateActivity() {
         Response Activities = activities.getActivities();
         int id = Activities.jsonPath().get("[0].id");
@@ -73,6 +89,9 @@ public class ActivitiesApiTest {
     }
 
     @Test(description = "delete Activity")
+    @Story("delete Request")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description : Verify Verify status Code equal:200 when Delete Activity")
     public void deleteActivity() {
         Response Activities = activities.getActivities();
         int id = Activities.jsonPath().get("[0].id");
