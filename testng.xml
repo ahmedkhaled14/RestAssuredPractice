@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="G:/RestAssuredPractice"><classes/></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="RestAssuredPractice">
+        <classes>
+            <class name="FakeRestApiTest.ActivitiesApiTest">
+                <methods>
+                    <include name="getActivitiesTest"/>
+                    <include name="getActivitiesByIdTest"/>
+                    <include name="createActivity"/>
+                    <include name="updateActivity"/>
+                    <include name="deleteActivity"/>
+                </methods>
+            </class>
+            <class name="Practice.FakeRestApiTest">
+                <methods>
+                    <exclude name="GetMethod"/>
+                </methods>
+            </class>
+            <class name="Practice.GetAndPostExamples">
+                <methods>
+                    <exclude name="GetTest"/>
+                    <exclude name="PostTest"/>
+                </methods>
+            </class>
+            <class name="Practice.PutAndDeleteExamples">
+                <methods>
+                    <exclude name="PutTest"/>
+                    <exclude name="DeleteTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
