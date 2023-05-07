@@ -5,6 +5,7 @@ import Utils.JsonFileManager;
 import io.qameta.allure.*;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -15,10 +16,17 @@ import static org.hamcrest.Matchers.equalTo;
 @Epic("Fake REST API Test")
 @Feature("Verify CRUD Operations on Activities module")
 public class ActivitiesApiTest {
-    Activities activities = new Activities();
-    JsonFileManager createActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/createActivityTestData.json");
-    JsonFileManager getActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/getActivityTestData.json");
-    JsonFileManager updateActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/updateActivityTestData.json");
+    Activities activities;
+    JsonFileManager createActivityJson;
+    JsonFileManager getActivityJson;
+    JsonFileManager updateActivityJson;
+     @BeforeMethod
+    public void beforeMethod(){
+         activities = new Activities();
+         createActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/createActivityTestData.json");
+         getActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/getActivityTestData.json");
+         updateActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/updateActivityTestData.json");
+   }
 
     @Test(description = "get all Activities")
     @Story("GET Request")

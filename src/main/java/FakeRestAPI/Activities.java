@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 
 public class Activities {
 
+
     public Activities() {
         RestAssured.baseURI = "https://fakerestapi.azurewebsites.net/api/v1";
     }
