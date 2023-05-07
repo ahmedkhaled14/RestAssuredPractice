@@ -6,7 +6,7 @@
             <class name="FakeRestApiTest.ActivitiesApiTest">
                 <methods>
                     <include name="getActivitiesTest"/>
-                    <include name="getActivitiesByIdTest"/>
+                    <include name="getActivityByIdTest"/>
                     <include name="createActivity"/>
                     <include name="updateActivity"/>
                     <include name="deleteActivity"/>

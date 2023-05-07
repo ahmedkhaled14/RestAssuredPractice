@@ -27,12 +27,12 @@ public class Activities {
     }
 
     /**
-     * get Activities By ID
+     * get Activity By ID
      *
      * @param id Required ID
-     * @return Activities By ID
+     * @return Activity By ID
      */
-    @Step("get Activities By ID : [{id}]")
+    @Step("get Activity By ID : [{id}]")
 
     public Response getActivitiesByID(int id) {
         return RestAssured
@@ -44,8 +44,8 @@ public class Activities {
     /**
      * create Activity Body
      *
-     * @param title     String Value
-     * @param completed Boolean Value (true || false)
+     * @param title     String Value from src/test/resources/TestData/createActivityTestData.json
+     * @param completed Boolean Value (true || false) from src/test/resources/TestData/createActivityTestData.json
      * @return Activity Body
      */
     @Step("create Activity Body  title: [{title}] , completed [{completed}] ")
@@ -59,8 +59,8 @@ public class Activities {
     /**
      * post Activities
      *
-     * @param title     String Value
-     * @param completed Boolean Value (true || false)
+     *@param title     String Value from src/test/resources/TestData/createActivityTestData.json
+     *@param completed  Boolean Value (true || false) from src/test/resources/TestData/createActivityTestData.json
      * @return create new Activity
      */
     @Step("post Activities title: [{title}] , completed [{completed}]")
@@ -79,11 +79,10 @@ public class Activities {
      * put Activities
      *
      * @param id        int value to choose which activity you want to update
-     * @param title     String value
-     * @param completed Boolean Value (true || false)
+     * @param title     String value from src/test/resources/TestData/updateActivityTestData.json
+     * @param completed Boolean Value (true || false) from src/test/resources/TestData/updateActivityTestData.json
      * @return updated activity
      */
-
     @Step("put Activities id:[{id}] , title: [{title}] , completed [{completed}]")
     public Response putActivities(int id, String title, Boolean completed) {
         return
@@ -100,7 +99,7 @@ public class Activities {
      * delete Activities
      *
      * @param id int value to choose which activity you want to delete
-     * @return delete Activity with status Code = 200 as the API documentation refer to
+     * @return delete Activity
      */
     @Step("delete Activities id: [{id}]")
     public Response deleteActivities(int id) {
