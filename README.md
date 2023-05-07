@@ -42,7 +42,7 @@
 1. Run API tests:
 ` mvn clean test` 
 2. Generate reports:
-`mvn allure:serve`
+`mvn allure:serve` or `allure serve`
 
 -  ### 📄 Allure Report: 
 
