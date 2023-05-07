@@ -5,7 +5,6 @@ import Utils.JsonFileManager;
 import io.qameta.allure.*;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -13,25 +12,24 @@ import java.io.File;
 import static org.hamcrest.Matchers.equalTo;
 
 
-@Epic("REST API Test")
+@Epic("Fake REST API Test")
 @Feature("Verify CRUD Operations on Activities module")
 public class ActivitiesApiTest {
     Activities activities = new Activities();
-    JsonFileManager createActivityJson = new JsonFileManager("src/test/resources/TestData/createActivityTestData.json");
-    JsonFileManager getActivityJson = new JsonFileManager("src/test/resources/TestData/getActivityTestData.json");
-    JsonFileManager updateActivityJson = new JsonFileManager("src/test/resources/TestData/updateActivityTestData.json");
+    JsonFileManager createActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/createActivityTestData.json");
+    JsonFileManager getActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/getActivityTestData.json");
+    JsonFileManager updateActivityJson = new JsonFileManager("src/test/resources/TestData/ActivitiesTestData/updateActivityTestData.json");
 
     @Test(description = "get all Activities")
     @Story("GET Request")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Test Description : Verify status Code equal:200 & Validate Json Schema ")
     public void getActivitiesTest() {
-        Response getActivities = activities.getActivities();
-        Assert.assertEquals(getActivities.statusCode(), 200);
         activities.getActivities()
                 .then()
                 .assertThat()
-                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/resources/TestData/getActivitiesSchema.json")))
+                .statusCode(200)
+                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/resources/TestData/ActivitiesTestData/getActivitiesSchema.json")))
                 .log()
                 .all();
 
@@ -41,14 +39,14 @@ public class ActivitiesApiTest {
     @Story("GET Request")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Test Description : Verify title & ID & Validate Json Schema & Verify status Code equal:200 ")
-    public void getActivitiesByIdTest() {
-        Response getActivitiesById = activities.getActivitiesByID(1);
-        getActivitiesById.then()
+    public void getActivityByIdTest() {
+        activities.getActivitiesByID(1)
+                .then()
                 .body("id", equalTo(1))
                 .and()
                 .body("title", equalTo(getActivityJson.getTestData("title")))
                 .and()
-                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/resources/TestData/getActivitySchema.json")))
+                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/resources/TestData/ActivitiesTestData/getActivitySchema.json")))
                 .statusCode(200)
                 .log()
                 .all();

@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome2",
+  "definitions": {
+    "Welcome2": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "completed",
+        "dueDate",
+        "id",
+        "title"
+      ],
+      "title": "Welcome2"
+    }
+  }
+}
