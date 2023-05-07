@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="RestAssuredPractice">
+<suite name="FakeRestApi and restfulBookerApi Test Suite">
+    <test verbose="2"  name="RestAssuredPractice">
         <classes>
             <class name="FakeRestApiTest.ActivitiesApiTest">
                 <methods>
@@ -10,6 +10,16 @@
                     <include name="createActivity"/>
                     <include name="updateActivity"/>
                     <include name="deleteActivity"/>
+                </methods>
+            </class>
+            <class name="restfulBookerApiTest.BookingApiTest">
+                <methods>
+                    <include name="login"/>
+                    <include name="getAllBookingsIds"/>
+                    <include name="getBooking"/>
+                    <include name="postBooking"/>
+                    <include name="putBooking"/>
+                    <include name="deleteBooking"/>
                 </methods>
             </class>
             <class name="Practice.FakeRestApiTest">
@@ -29,6 +39,7 @@
                     <exclude name="DeleteTest"/>
                 </methods>
             </class>
+
         </classes>
     </test>
 </suite>
