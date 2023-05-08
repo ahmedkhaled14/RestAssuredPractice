@@ -7,7 +7,6 @@
 
 * 🌐 **[FakeRESTApi](https://fakerestapi.azurewebsites.net/index.html)**
 
-
 * 🌐 **[RestfulBookerApi](https://restful-booker.herokuapp.com/apidoc/index.html)**
 
 
@@ -19,7 +18,7 @@
  
  * Allure Report
  
- ### 🏗️ Project Design:
+ ### 🎨 Project Design:
 
  *  Object Model design pattern
  
@@ -27,8 +26,33 @@
  
  * Java Docs
  
+ ### 🏗️ Project Structure 
+ 
+ ![rest](https://user-images.githubusercontent.com/68038931/236828708-3e076917-b584-41e6-a8e5-a2ffdbf0be01.png)
+ 
+#### 🔊 this project included
+
+#### 📦️ 3 packages in src/main/java
+ * FakeRestApi ( object Model Design )
+ * Restfulbooker ( object Model Design )
+ * Utils ( used to read data from external json file )
+ 
+#### 📦️ 3 packages in src/test/java
+ * FakeRestApiTest ( object Model Design )
+ * RestfulbookerApiTest ( object Model Design )
+ * Practice ( linear Design )
+ 
+ #### 🧱 2 folders in src/test/resources/TestData
+ * ActivitiesTestData
+ * BookingTestData
+ 
+#### ⚗️ 2 xml files
+* pom.xml ( XML file that contains information about the project and configuration details used by Maven to build the project)
+* testng.xml ( is the configuration for TestNG testing framework ( defining test suite )
+ 
+ 
  ### 🗃️ Documentation
-* **[Appium Docs](https://rest-assured.io/)**
+* **[Rest-Assured Docs](https://rest-assured.io/)**
  
  ### 🚧 Requirements
 
