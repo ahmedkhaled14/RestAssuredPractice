@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 
+@SuppressWarnings("ALL")
 public class Booking {
 
 
@@ -173,7 +174,8 @@ public class Booking {
                 .given()
                 .filter(new AllureRestAssured())
                 .contentType(ContentType.JSON)
-                .cookie(token)
+                .accept(ContentType.JSON)
+                .header("token=" ,token)
                 .body(updatedBookingBody(updatedFirstname, updatedLastname, updatedTotalprice, updatedDepositpaid,
                         updatedCheckinDate, updatedCheckoutDate, updatedAdditionalneeds).toJSONString())
                 .put("booking/" + bookingId);

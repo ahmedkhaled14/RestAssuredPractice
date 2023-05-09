@@ -6,6 +6,8 @@ import io.qameta.allure.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.hamcrest.Matchers.equalTo;
+
 
 @Epic("Restful Booker API Test")
 @Feature("Verify CRUD Operations on Bookings module")
@@ -66,7 +68,7 @@ public class BookingApiTest {
     @Test(description = "create New Booking")
     @Story("post Request")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Test Description :  Verify status Code equal:200")
+    @Description("Test Description :  Verify status Code equal:200 & Verify firstname & lastname of new Booking")
     public void postBooking() {
         booking
                 .createBooking
@@ -80,6 +82,9 @@ public class BookingApiTest {
                                 createBookingJson.getTestData("additionalneeds")
                         )
                 .then()
+                .assertThat()
+                .body("booking.firstname" , equalTo(createBookingJson.getTestData("firstname")))
+                .body("booking.lastname" , equalTo(createBookingJson.getTestData("lastname")))
                 .statusCode(200)
                 .log()
                 .all();
@@ -98,7 +103,7 @@ public class BookingApiTest {
         booking
                 .updateBooking
                         (
-                                "token=" + token,
+                                token,
                                 BookingId,
                                 updateBookingJson.getTestData("firstname"),
                                 updateBookingJson.getTestData("lastname"),
