@@ -175,7 +175,7 @@ public class Booking {
                 .filter(new AllureRestAssured())
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .header("token=" ,token)
+                .header("Cookie","token=" +token)
                 .body(updatedBookingBody(updatedFirstname, updatedLastname, updatedTotalprice, updatedDepositpaid,
                         updatedCheckinDate, updatedCheckoutDate, updatedAdditionalneeds).toJSONString())
                 .put("booking/" + bookingId);
@@ -188,10 +188,11 @@ public class Booking {
      * @return delete Booking
      */
     @Step("delete Booking bookingId:[{bookingId}]")
-    public Response deleteBooking(int bookingId) {
+    public Response deleteBooking(int bookingId,String token) {
         return RestAssured
                 .given()
                 .filter(new AllureRestAssured())
+                .header("Cookie","token=" +token)
                 .delete("booking/" + bookingId);
     }
 

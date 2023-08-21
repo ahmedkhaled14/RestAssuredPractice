@@ -125,8 +125,9 @@ public class BookingApiTest {
     @Description("Test Description :  delete Booking")
     public void deleteBooking() {
         int BookingId = booking.getBookingIds().jsonPath().get("[2].bookingid");
-        booking
-                .deleteBooking(BookingId)
+        String token = booking.authentication( loginJson.getTestData("userName"),
+                loginJson.getTestData("password")).jsonPath().get("token");        booking
+                .deleteBooking(BookingId,token)
                 .then()
                 .log()
                 .all();
